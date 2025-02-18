@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coefficients",
+  "info": {
+    "singularName": "coefficient",
+    "pluralName": "coefficients",
+    "displayName": "Coefficient"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "calculator_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::calculator-user.calculator-user",
+      "inversedBy": "coefficient"
+    }
+  }
+}

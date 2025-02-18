@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calculator_users",
+  "info": {
+    "singularName": "calculator-user",
+    "pluralName": "calculator-users",
+    "displayName": "Calculator User",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "enumeration",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "required": true,
+      "default": "user"
+    },
+    "coefficient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::coefficient.coefficient",
+      "mappedBy": "calculator_user"
+    }
+  }
+}

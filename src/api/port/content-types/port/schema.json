@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ports",
+  "info": {
+    "singularName": "port",
+    "pluralName": "ports",
+    "displayName": "Port"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::state.state",
+      "mappedBy": "port"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::location.location",
+      "mappedBy": "port"
+    }
+  }
+}

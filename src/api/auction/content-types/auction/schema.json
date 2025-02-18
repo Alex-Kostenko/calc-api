@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auctions",
+  "info": {
+    "singularName": "auction",
+    "pluralName": "auctions",
+    "displayName": "Auction"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "mappedBy": "auctions"
+    }
+  }
+}
