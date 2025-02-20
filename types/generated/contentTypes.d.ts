@@ -369,6 +369,36 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAuctionTaxAuctionTax extends Struct.CollectionTypeSchema {
+  collectionName: 'auction_taxes';
+  info: {
+    description: '';
+    displayName: 'Auction Tax';
+    pluralName: 'auction-taxes';
+    singularName: 'auction-tax';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    auctions: Schema.Attribute.Relation<'oneToMany', 'api::auction.auction'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::auction-tax.auction-tax'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tax: Schema.Attribute.Component<'tax.tax', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
   collectionName: 'auctions';
   info: {
@@ -380,6 +410,10 @@ export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    auction_tax: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::auction-tax.auction-tax'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -437,6 +471,47 @@ export interface ApiCalculatorUserCalculatorUser
     role: Schema.Attribute.Enumeration<['admin', 'user']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'user'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
+  collectionName: 'car_types';
+  info: {
+    description: '';
+    displayName: 'Car Type';
+    pluralName: 'car-types';
+    singularName: 'car-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::car-type.car-type'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    packImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    price: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -509,6 +584,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
 export interface ApiPortPort extends Struct.CollectionTypeSchema {
   collectionName: 'ports';
   info: {
+    description: '';
     displayName: 'Port';
     pluralName: 'ports';
     singularName: 'port';
@@ -517,6 +593,7 @@ export interface ApiPortPort extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    car_types: Schema.Attribute.Component<'car-type.car-type', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -526,7 +603,6 @@ export interface ApiPortPort extends Struct.CollectionTypeSchema {
     locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    states: Schema.Attribute.Relation<'oneToMany', 'api::state.state'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -536,6 +612,7 @@ export interface ApiPortPort extends Struct.CollectionTypeSchema {
 export interface ApiStateState extends Struct.CollectionTypeSchema {
   collectionName: 'states';
   info: {
+    description: '';
     displayName: 'State';
     pluralName: 'states';
     singularName: 'state';
@@ -552,8 +629,6 @@ export interface ApiStateState extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    port: Schema.Attribute.Relation<'manyToOne', 'api::port.port'>;
-    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1070,8 +1145,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::auction-tax.auction-tax': ApiAuctionTaxAuctionTax;
       'api::auction.auction': ApiAuctionAuction;
       'api::calculator-user.calculator-user': ApiCalculatorUserCalculatorUser;
+      'api::car-type.car-type': ApiCarTypeCarType;
       'api::coefficient.coefficient': ApiCoefficientCoefficient;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;

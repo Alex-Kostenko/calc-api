@@ -4,7 +4,8 @@
   "info": {
     "singularName": "state",
     "pluralName": "states",
-    "displayName": "State"
+    "displayName": "State",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,16 +14,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "price": {
-      "type": "decimal",
-      "required": true
-    },
-    "port": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::port.port",
-      "inversedBy": "states"
     },
     "locations": {
       "type": "relation",

@@ -19,6 +19,12 @@
       "relation": "manyToMany",
       "target": "api::location.location",
       "mappedBy": "auctions"
+    },
+    "auction_tax": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::auction-tax.auction-tax",
+      "inversedBy": "auctions"
     }
   }
 }

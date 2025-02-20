@@ -4,7 +4,8 @@
   "info": {
     "singularName": "port",
     "pluralName": "ports",
-    "displayName": "Port"
+    "displayName": "Port",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,17 +15,16 @@
       "type": "string",
       "required": true
     },
-    "states": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::state.state",
-      "mappedBy": "port"
-    },
     "locations": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::location.location",
       "mappedBy": "port"
+    },
+    "car_types": {
+      "type": "component",
+      "repeatable": true,
+      "component": "car-type.car-type"
     }
   }
 }
