@@ -4,17 +4,22 @@
   "info": {
     "singularName": "coefficient",
     "pluralName": "coefficients",
-    "displayName": "Coefficient"
+    "displayName": "Coefficient",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "calculator_user": {
+    "volume": {
+      "type": "decimal",
+      "required": true
+    },
+    "users": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::calculator-user.calculator-user",
-      "inversedBy": "coefficient"
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "coefficient"
     }
   }
 }

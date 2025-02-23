@@ -448,10 +448,6 @@ export interface ApiCalculatorUserCalculatorUser
     draftAndPublish: true;
   };
   attributes: {
-    coefficient: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::coefficient.coefficient'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -521,6 +517,7 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
 export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
   collectionName: 'coefficients';
   info: {
+    description: '';
     displayName: 'Coefficient';
     pluralName: 'coefficients';
     singularName: 'coefficient';
@@ -529,10 +526,6 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    calculator_user: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calculator-user.calculator-user'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -542,6 +535,41 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
       'api::coefficient.coefficient'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    volume: Schema.Attribute.Decimal & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiFormulaFormula extends Struct.CollectionTypeSchema {
+  collectionName: 'formulas';
+  info: {
+    description: '';
+    displayName: 'Formula';
+    pluralName: 'formulas';
+    singularName: 'formula';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    function: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::formula.formula'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1091,10 +1119,13 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    coefficient: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::coefficient.coefficient'
+    >;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1150,6 +1181,7 @@ declare module '@strapi/strapi' {
       'api::calculator-user.calculator-user': ApiCalculatorUserCalculatorUser;
       'api::car-type.car-type': ApiCarTypeCarType;
       'api::coefficient.coefficient': ApiCoefficientCoefficient;
+      'api::formula.formula': ApiFormulaFormula;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;
       'api::state.state': ApiStateState;

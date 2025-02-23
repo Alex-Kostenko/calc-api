@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_element_elements",
+  "info": {
+    "displayName": "element",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "enumeration",
+      "enum": [
+        "рік",
+        "об'єм"
+      ]
+    },
+    "operation": {
+      "type": "enumeration",
+      "enum": [
+        "плюс",
+        "мінус",
+        "ділення",
+        "множення"
+      ]
+    }
+  }
+}

@@ -36,12 +36,6 @@
       ],
       "required": true,
       "default": "user"
-    },
-    "coefficient": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::coefficient.coefficient",
-      "mappedBy": "calculator_user"
     }
   }
 }
