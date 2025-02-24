@@ -435,44 +435,6 @@ export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCalculatorUserCalculatorUser
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'calculator_users';
-  info: {
-    description: '';
-    displayName: 'Calculator User';
-    pluralName: 'calculator-users';
-    singularName: 'calculator-user';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    lastname: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calculator-user.calculator-user'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    password: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    role: Schema.Attribute.Enumeration<['admin', 'user']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'user'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
   collectionName: 'car_types';
   info: {
@@ -495,9 +457,10 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
       'api::car-type.car-type'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    name: Schema.Attribute.Enumeration<
+      ['sedan', 'crossover', 'big-crossover', 'pikup', 'minivan']
+    > &
+      Schema.Attribute.Required;
     packImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     price: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
@@ -543,7 +506,49 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
-    volume: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    volume: Schema.Attribute.Component<'coefficient.coefficient', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface ApiConstConst extends Struct.SingleTypeSchema {
+  collectionName: 'consts';
+  info: {
+    description: '';
+    displayName: 'Const';
+    pluralName: 'consts';
+    singularName: 'const';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    broker: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<150>;
+    certification: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<125>;
+    cityDelivery: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<350>;
+    companyService: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<100>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dangerousGoods: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<125>;
+    expedition: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<350>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::const.const'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1178,9 +1183,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::auction-tax.auction-tax': ApiAuctionTaxAuctionTax;
       'api::auction.auction': ApiAuctionAuction;
-      'api::calculator-user.calculator-user': ApiCalculatorUserCalculatorUser;
       'api::car-type.car-type': ApiCarTypeCarType;
       'api::coefficient.coefficient': ApiCoefficientCoefficient;
+      'api::const.const': ApiConstConst;
       'api::formula.formula': ApiFormulaFormula;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;

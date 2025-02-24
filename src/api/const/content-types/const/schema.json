@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "consts",
+  "info": {
+    "singularName": "const",
+    "pluralName": "consts",
+    "displayName": "Const",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "broker": {
+      "type": "decimal",
+      "required": true,
+      "default": 150
+    },
+    "expedition": {
+      "type": "decimal",
+      "required": true,
+      "default": 350
+    },
+    "cityDelivery": {
+      "type": "decimal",
+      "default": 350,
+      "required": true
+    },
+    "certification": {
+      "type": "decimal",
+      "required": true,
+      "default": 125
+    },
+    "companyService": {
+      "type": "decimal",
+      "default": 100
+    },
+    "dangerousGoods": {
+      "type": "decimal",
+      "default": 125,
+      "required": true
+    }
+  }
+}

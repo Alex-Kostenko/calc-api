@@ -23,6 +23,19 @@ export interface CarTypeCarType extends Struct.ComponentSchema {
   };
 }
 
+export interface CoefficientCoefficient extends Struct.ComponentSchema {
+  collectionName: 'components_coefficient_coefficients';
+  info: {
+    displayName: 'Coefficient';
+  };
+  attributes: {
+    is_percent: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    value: Schema.Attribute.Decimal & Schema.Attribute.Required;
+  };
+}
+
 export interface ElementElement extends Struct.ComponentSchema {
   collectionName: 'components_element_elements';
   info: {
@@ -51,6 +64,9 @@ export interface TaxTax extends Struct.ComponentSchema {
     displayName: 'Tax';
   };
   attributes: {
+    is_percent: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     tax: Schema.Attribute.Decimal & Schema.Attribute.Required;
     threshold: Schema.Attribute.BigInteger & Schema.Attribute.Required;
   };
@@ -60,6 +76,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'car-type.car-type': CarTypeCarType;
+      'coefficient.coefficient': CoefficientCoefficient;
       'element.element': ElementElement;
       'tax.tax': TaxTax;
     }

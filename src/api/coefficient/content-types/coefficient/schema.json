@@ -11,15 +11,17 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "volume": {
-      "type": "decimal",
-      "required": true
-    },
     "users": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "coefficient"
+    },
+    "volume": {
+      "type": "component",
+      "repeatable": false,
+      "component": "coefficient.coefficient",
+      "required": true
     }
   }
 }

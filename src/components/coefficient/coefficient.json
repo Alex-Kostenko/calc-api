@@ -1,16 +1,11 @@
 {
-  "collectionName": "components_tax_taxes",
+  "collectionName": "components_coefficient_coefficients",
   "info": {
-    "displayName": "Tax",
-    "description": ""
+    "displayName": "Coefficient"
   },
   "options": {},
   "attributes": {
-    "threshold": {
-      "type": "biginteger",
-      "required": true
-    },
-    "tax": {
+    "value": {
       "type": "decimal",
       "required": true
     },
