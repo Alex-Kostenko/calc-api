@@ -57,6 +57,22 @@ export interface ElementElement extends Struct.ComponentSchema {
   };
 }
 
+export interface PercentByValuePercentByValue extends Struct.ComponentSchema {
+  collectionName: 'components_percent_by_value_percent_by_values';
+  info: {
+    displayName: 'Percent By Value';
+  };
+  attributes: {
+    percent: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<3>;
+    threshold: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface TaxTax extends Struct.ComponentSchema {
   collectionName: 'components_tax_taxes';
   info: {
@@ -78,6 +94,7 @@ declare module '@strapi/strapi' {
       'car-type.car-type': CarTypeCarType;
       'coefficient.coefficient': CoefficientCoefficient;
       'element.element': ElementElement;
+      'percent-by-value.percent-by-value': PercentByValuePercentByValue;
       'tax.tax': TaxTax;
     }
   }

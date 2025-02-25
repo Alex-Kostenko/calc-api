@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "registrations",
+  "info": {
+    "singularName": "registration",
+    "pluralName": "registrations",
+    "displayName": "Registration"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "values": {
+      "displayName": "Percent By Value",
+      "type": "component",
+      "repeatable": true,
+      "component": "percent-by-value.percent-by-value",
+      "required": true
+    }
+  }
+}

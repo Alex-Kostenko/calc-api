@@ -39,6 +39,11 @@
       "type": "decimal",
       "default": 125,
       "required": true
+    },
+    "eur": {
+      "type": "decimal",
+      "required": true,
+      "default": 1.07
     }
   }
 }

@@ -539,6 +539,9 @@ export interface ApiConstConst extends Struct.SingleTypeSchema {
     dangerousGoods: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<125>;
+    eur: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<1.07>;
     expedition: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<350>;
@@ -639,6 +642,38 @@ export interface ApiPortPort extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRegistrationRegistration extends Struct.SingleTypeSchema {
+  collectionName: 'registrations';
+  info: {
+    displayName: 'Registration';
+    pluralName: 'registrations';
+    singularName: 'registration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::registration.registration'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    values: Schema.Attribute.Component<
+      'percent-by-value.percent-by-value',
+      true
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -1189,6 +1224,7 @@ declare module '@strapi/strapi' {
       'api::formula.formula': ApiFormulaFormula;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;
+      'api::registration.registration': ApiRegistrationRegistration;
       'api::state.state': ApiStateState;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
