@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_value_by_amount_value_by_amounts",
+  "info": {
+    "displayName": "Value by amount"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "min": {
+      "type": "decimal",
+      "required": true
+    },
+    "max": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

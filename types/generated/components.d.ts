@@ -88,6 +88,18 @@ export interface TaxTax extends Struct.ComponentSchema {
   };
 }
 
+export interface ValueByAmountValueByAmount extends Struct.ComponentSchema {
+  collectionName: 'components_value_by_amount_value_by_amounts';
+  info: {
+    displayName: 'Value by amount';
+  };
+  attributes: {
+    amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    max: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    min: Schema.Attribute.Decimal & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -96,6 +108,7 @@ declare module '@strapi/strapi' {
       'element.element': ElementElement;
       'percent-by-value.percent-by-value': PercentByValuePercentByValue;
       'tax.tax': TaxTax;
+      'value-by-amount.value-by-amount': ValueByAmountValueByAmount;
     }
   }
 }

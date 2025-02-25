@@ -585,6 +585,46 @@ export interface ApiFormulaFormula extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFuelFuel extends Struct.SingleTypeSchema {
+  collectionName: 'fuels';
+  info: {
+    displayName: 'Fuel';
+    pluralName: 'fuels';
+    singularName: 'fuel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    diesel: Schema.Attribute.Component<
+      'value-by-amount.value-by-amount',
+      false
+    >;
+    electric: Schema.Attribute.Component<
+      'value-by-amount.value-by-amount',
+      false
+    >;
+    gasoline: Schema.Attribute.Component<
+      'value-by-amount.value-by-amount',
+      false
+    >;
+    hybrid: Schema.Attribute.Component<
+      'value-by-amount.value-by-amount',
+      false
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::fuel.fuel'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   collectionName: 'locations';
   info: {
@@ -1222,6 +1262,7 @@ declare module '@strapi/strapi' {
       'api::coefficient.coefficient': ApiCoefficientCoefficient;
       'api::const.const': ApiConstConst;
       'api::formula.formula': ApiFormulaFormula;
+      'api::fuel.fuel': ApiFuelFuel;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;
       'api::registration.registration': ApiRegistrationRegistration;
