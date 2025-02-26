@@ -4,7 +4,8 @@
   "info": {
     "singularName": "auction",
     "pluralName": "auctions",
-    "displayName": "Auction"
+    "displayName": "Auction",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,14 @@
       "relation": "manyToOne",
       "target": "api::auction-tax.auction-tax",
       "inversedBy": "auctions"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
