@@ -525,28 +525,16 @@ export interface ApiConstConst extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    broker: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<150>;
-    certification: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<125>;
-    cityDelivery: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<350>;
-    companyService: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<100>;
+    broker: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    certification: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    cityDelivery: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    companyService: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dangerousGoods: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<125>;
-    eur: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<1.07>;
-    expedition: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<350>;
+    dangerousGoods: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    eur: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    expedition: Schema.Attribute.Decimal & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::const.const'> &
       Schema.Attribute.Private;

@@ -13,37 +13,30 @@
   "attributes": {
     "broker": {
       "type": "decimal",
-      "required": true,
-      "default": 150
+      "required": true
     },
     "expedition": {
       "type": "decimal",
-      "required": true,
-      "default": 350
+      "required": true
     },
     "cityDelivery": {
       "type": "decimal",
-      "default": 350,
       "required": true
     },
     "certification": {
       "type": "decimal",
-      "required": true,
-      "default": 125
+      "required": true
     },
     "companyService": {
-      "type": "decimal",
-      "default": 100
+      "type": "decimal"
     },
     "dangerousGoods": {
       "type": "decimal",
-      "default": 125,
       "required": true
     },
     "eur": {
       "type": "decimal",
-      "required": true,
-      "default": 1.07
+      "required": true
     }
   }
 }
