@@ -491,6 +491,8 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    coef: Schema.Attribute.Component<'coef.coef', true> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -500,6 +502,9 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
       'api::coefficient.coefficient'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -508,8 +513,6 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
-    volume: Schema.Attribute.Component<'coefficient.coefficient', false> &
-      Schema.Attribute.Required;
   };
 }
 
@@ -1195,7 +1198,8 @@ export interface PluginUsersPermissionsUser
     coefficient: Schema.Attribute.Relation<
       'manyToOne',
       'api::coefficient.coefficient'
-    >;
+    > &
+      Schema.Attribute.Required;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;

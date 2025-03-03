@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_coef_coefs",
+  "info": {
+    "displayName": "coef",
+    "icon": "connector",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "decimal",
+      "required": true,
+      "min": 1,
+      "default": 1
+    },
+    "isPercent": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Field": {
+      "type": "enumeration",
+      "enum": [
+        "auctionFee",
+        "insurance",
+        "excise",
+        "duty",
+        "vat"
+      ],
+      "required": true
+    }
+  }
+}

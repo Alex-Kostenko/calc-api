@@ -23,6 +23,33 @@ export interface CarTypeCarType extends Struct.ComponentSchema {
   };
 }
 
+export interface CoefCoef extends Struct.ComponentSchema {
+  collectionName: 'components_coef_coefs';
+  info: {
+    description: '';
+    displayName: 'coef';
+    icon: 'connector';
+  };
+  attributes: {
+    Field: Schema.Attribute.Enumeration<
+      ['auctionFee', 'insurance', 'excise', 'duty', 'vat']
+    > &
+      Schema.Attribute.Required;
+    isPercent: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    value: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<1>;
+  };
+}
+
 export interface CoefficientCoefficient extends Struct.ComponentSchema {
   collectionName: 'components_coefficient_coefficients';
   info: {
@@ -104,6 +131,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'car-type.car-type': CarTypeCarType;
+      'coef.coef': CoefCoef;
       'coefficient.coefficient': CoefficientCoefficient;
       'element.element': ElementElement;
       'percent-by-value.percent-by-value': PercentByValuePercentByValue;
