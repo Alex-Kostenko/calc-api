@@ -31,8 +31,22 @@ export interface CoefCoef extends Struct.ComponentSchema {
     icon: 'connector';
   };
   attributes: {
-    Field: Schema.Attribute.Enumeration<
-      ['auctionFee', 'insurance', 'excise', 'duty', 'vat']
+    field: Schema.Attribute.Enumeration<
+      [
+        'auctionFee',
+        'insurance',
+        'portDelivery',
+        'cityDelivery',
+        'seaTransportation',
+        'broker',
+        'excise',
+        'duty',
+        'vat',
+        'expedition',
+        'sertification',
+        'registration',
+        'companyServices',
+      ]
     > &
       Schema.Attribute.Required;
     isPercent: Schema.Attribute.Boolean &

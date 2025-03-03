@@ -18,14 +18,22 @@
       "default": false,
       "required": true
     },
-    "Field": {
+    "field": {
       "type": "enumeration",
       "enum": [
         "auctionFee",
         "insurance",
+        "portDelivery",
+        "cityDelivery",
+        "seaTransportation",
+        "broker",
         "excise",
         "duty",
-        "vat"
+        "vat",
+        "expedition",
+        "sertification",
+        "registration",
+        "companyServices"
       ],
       "required": true
     }
