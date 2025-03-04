@@ -21,6 +21,11 @@
       "relation": "oneToMany",
       "target": "api::auction.auction",
       "mappedBy": "auction_tax"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
