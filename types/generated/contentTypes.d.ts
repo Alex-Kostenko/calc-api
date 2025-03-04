@@ -464,14 +464,6 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     packImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    price: Schema.Attribute.Decimal &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

@@ -7,7 +7,6 @@ export interface CarTypeCarType extends Struct.ComponentSchema {
     displayName: 'Car Type';
   };
   attributes: {
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     name: Schema.Attribute.Enumeration<
       ['sedan', 'minivan', 'pikup', 'crossover', 'big-crossover']
     > &

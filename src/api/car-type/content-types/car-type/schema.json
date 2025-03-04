@@ -19,11 +19,6 @@
         "images"
       ]
     },
-    "price": {
-      "type": "decimal",
-      "required": true,
-      "min": 0
-    },
     "packImage": {
       "type": "media",
       "multiple": false,
