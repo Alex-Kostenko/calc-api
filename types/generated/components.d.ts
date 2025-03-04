@@ -26,7 +26,7 @@ export interface CoefCoef extends Struct.ComponentSchema {
   collectionName: 'components_coef_coefs';
   info: {
     description: '';
-    displayName: 'coef';
+    displayName: 'Component:Coefficient';
     icon: 'connector';
   };
   attributes: {
@@ -60,19 +60,6 @@ export interface CoefCoef extends Struct.ComponentSchema {
         number
       > &
       Schema.Attribute.DefaultTo<1>;
-  };
-}
-
-export interface CoefficientCoefficient extends Struct.ComponentSchema {
-  collectionName: 'components_coefficient_coefficients';
-  info: {
-    displayName: 'Coefficient';
-  };
-  attributes: {
-    is_percent: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
-    value: Schema.Attribute.Decimal & Schema.Attribute.Required;
   };
 }
 
@@ -145,7 +132,6 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'car-type.car-type': CarTypeCarType;
       'coef.coef': CoefCoef;
-      'coefficient.coefficient': CoefficientCoefficient;
       'element.element': ElementElement;
       'percent-by-value.percent-by-value': PercentByValuePercentByValue;
       'tax.tax': TaxTax;
