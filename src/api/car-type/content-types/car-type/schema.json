@@ -37,6 +37,11 @@
         "minivan"
       ],
       "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

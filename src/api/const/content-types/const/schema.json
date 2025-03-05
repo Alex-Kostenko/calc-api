@@ -37,6 +37,9 @@
     "eur": {
       "type": "decimal",
       "required": true
+    },
+    "sublot": {
+      "type": "decimal"
     }
   }
 }
