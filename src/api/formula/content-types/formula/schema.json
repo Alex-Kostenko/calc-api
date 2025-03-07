@@ -18,6 +18,9 @@
     "function": {
       "type": "text",
       "required": true
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
