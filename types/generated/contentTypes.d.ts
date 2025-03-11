@@ -418,6 +418,8 @@ export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::auction-tax.auction-tax'
     >;
+    bids: Schema.Attribute.Component<'bid.bid', true> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -611,6 +613,36 @@ export interface ApiFuelFuel extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::fuel.fuel'> &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLiveBidLiveBid extends Struct.CollectionTypeSchema {
+  collectionName: 'live_bids';
+  info: {
+    displayName: 'LiveBid';
+    pluralName: 'live-bids';
+    singularName: 'live-bid';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bids: Schema.Attribute.Component<'bid.bid', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::live-bid.live-bid'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1256,6 +1288,7 @@ declare module '@strapi/strapi' {
       'api::const.const': ApiConstConst;
       'api::formula.formula': ApiFormulaFormula;
       'api::fuel.fuel': ApiFuelFuel;
+      'api::live-bid.live-bid': ApiLiveBidLiveBid;
       'api::location.location': ApiLocationLocation;
       'api::port.port': ApiPortPort;
       'api::registration.registration': ApiRegistrationRegistration;

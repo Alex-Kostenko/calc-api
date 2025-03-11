@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "live_bids",
+  "info": {
+    "singularName": "live-bid",
+    "pluralName": "live-bids",
+    "displayName": "LiveBid"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "bids": {
+      "type": "component",
+      "repeatable": true,
+      "component": "bid.bid",
+      "required": true
+    }
+  }
+}
