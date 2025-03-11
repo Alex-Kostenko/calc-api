@@ -1198,8 +1198,7 @@ export interface PluginUsersPermissionsUser
     coefficient: Schema.Attribute.Relation<
       'manyToOne',
       'api::coefficient.coefficient'
-    > &
-      Schema.Attribute.Required;
+    >;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;

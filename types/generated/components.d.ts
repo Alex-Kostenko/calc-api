@@ -42,7 +42,7 @@ export interface CoefCoef extends Struct.ComponentSchema {
         'duty',
         'vat',
         'expedition',
-        'sertification',
+        'certification',
         'registration',
         'companyServices',
       ]

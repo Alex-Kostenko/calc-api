@@ -69,8 +69,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::coefficient.coefficient",
-      "inversedBy": "users",
-      "required": true
+      "inversedBy": "users"
     }
   }
 }
