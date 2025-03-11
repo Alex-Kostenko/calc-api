@@ -1,0 +1,20 @@
+{
+    "collectionName": "components_percent_by_value_percent_by_values",
+    "info": {
+        "displayName": "Percent By Value"
+    },
+    "options": {},
+    "attributes": {
+        "threshold": {
+            "type": "decimal",
+            "required": true,
+            "default": 0,
+            "unique": true
+        },
+        "percent": {
+            "type": "decimal",
+            "default": 3,
+            "required": true
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "kind": "collectionType",
+    "collectionName": "locations",
+    "info": {
+        "singularName": "location",
+        "pluralName": "locations",
+        "displayName": "Location"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "price": {
+            "type": "decimal"
+        },
+        "port": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::port.port",
+            "inversedBy": "locations"
+        },
+        "state": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::state.state",
+            "inversedBy": "locations"
+        },
+        "auctions": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::auction.auction",
+            "inversedBy": "locations"
+        }
+    }
+}

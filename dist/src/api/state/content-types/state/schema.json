@@ -1,0 +1,25 @@
+{
+    "kind": "collectionType",
+    "collectionName": "states",
+    "info": {
+        "singularName": "state",
+        "pluralName": "states",
+        "displayName": "State",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "locations": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::location.location",
+            "mappedBy": "state"
+        }
+    }
+}

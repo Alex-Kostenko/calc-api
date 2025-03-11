@@ -1,0 +1,34 @@
+{
+    "kind": "singleType",
+    "collectionName": "fuels",
+    "info": {
+        "singularName": "fuel",
+        "pluralName": "fuels",
+        "displayName": "Fuel"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "gasoline": {
+            "type": "component",
+            "repeatable": false,
+            "component": "value-by-amount.value-by-amount"
+        },
+        "diesel": {
+            "type": "component",
+            "repeatable": false,
+            "component": "value-by-amount.value-by-amount"
+        },
+        "electric": {
+            "type": "component",
+            "repeatable": false,
+            "component": "value-by-amount.value-by-amount"
+        },
+        "hybrid": {
+            "type": "component",
+            "repeatable": false,
+            "component": "value-by-amount.value-by-amount"
+        }
+    }
+}

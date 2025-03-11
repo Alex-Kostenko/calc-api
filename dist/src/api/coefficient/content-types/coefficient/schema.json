@@ -1,0 +1,33 @@
+{
+    "kind": "collectionType",
+    "collectionName": "coefficients",
+    "info": {
+        "singularName": "coefficient",
+        "pluralName": "coefficients",
+        "displayName": "Coefficient",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "users": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "coefficient"
+        },
+        "name": {
+            "type": "string",
+            "unique": true,
+            "required": true
+        },
+        "coef": {
+            "displayName": "coef",
+            "type": "component",
+            "repeatable": true,
+            "component": "coef.coef",
+            "required": true
+        }
+    }
+}

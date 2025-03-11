@@ -1,0 +1,47 @@
+{
+    "kind": "collectionType",
+    "collectionName": "car_types",
+    "info": {
+        "singularName": "car-type",
+        "pluralName": "car-types",
+        "displayName": "Car Type",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "image": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "packImage": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "name": {
+            "type": "enumeration",
+            "enum": [
+                "sedan",
+                "crossover",
+                "big-crossover",
+                "pikup",
+                "minivan"
+            ],
+            "required": true
+        },
+        "label": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        }
+    }
+}

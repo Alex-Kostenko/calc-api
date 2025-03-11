@@ -1,0 +1,23 @@
+{
+    "collectionName": "components_tax_taxes",
+    "info": {
+        "displayName": "Tax",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "threshold": {
+            "type": "biginteger",
+            "required": true
+        },
+        "tax": {
+            "type": "decimal",
+            "required": true
+        },
+        "is_percent": {
+            "type": "boolean",
+            "default": false,
+            "required": true
+        }
+    }
+}

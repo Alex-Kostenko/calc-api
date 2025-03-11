@@ -1,0 +1,41 @@
+{
+    "collectionName": "components_coef_coefs",
+    "info": {
+        "displayName": "Component:Coefficient",
+        "icon": "connector",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "value": {
+            "type": "decimal",
+            "required": true,
+            "min": 1,
+            "default": 1
+        },
+        "isPercent": {
+            "type": "boolean",
+            "default": false,
+            "required": true
+        },
+        "field": {
+            "type": "enumeration",
+            "enum": [
+                "auctionFee",
+                "insurance",
+                "portDelivery",
+                "cityDelivery",
+                "seaTransportation",
+                "broker",
+                "excise",
+                "duty",
+                "vat",
+                "expedition",
+                "certification",
+                "registration",
+                "companyServices"
+            ],
+            "required": true
+        }
+    }
+}

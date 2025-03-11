@@ -1,0 +1,26 @@
+{
+    "collectionName": "components_car_type_car_types",
+    "info": {
+        "displayName": "Car Type",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "price": {
+            "type": "decimal",
+            "required": true,
+            "min": 0
+        },
+        "name": {
+            "type": "enumeration",
+            "enum": [
+                "sedan",
+                "minivan",
+                "pikup",
+                "crossover",
+                "big-crossover"
+            ],
+            "required": true
+        }
+    }
+}
