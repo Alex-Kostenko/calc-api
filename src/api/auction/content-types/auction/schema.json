@@ -40,6 +40,10 @@
       "repeatable": true,
       "component": "bid.bid",
       "required": true
+    },
+    "additionalFee": {
+      "type": "decimal",
+      "required": true
     }
   }
 }
