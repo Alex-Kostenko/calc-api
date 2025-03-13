@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_bid_bids",
+  "info": {
+    "displayName": "Bid"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "bid": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    }
+  }
+}

@@ -28,11 +28,21 @@
       "inversedBy": "auctions"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bids": {
+      "type": "component",
+      "repeatable": true,
+      "component": "bid.bid",
+      "required": true
+    },
+    "additionalFee": {
+      "type": "decimal",
       "required": true
     }
   }

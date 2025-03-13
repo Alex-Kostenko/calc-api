@@ -1,0 +1,5 @@
+/**
+ * images service
+ */
+
+export default () => ({});
