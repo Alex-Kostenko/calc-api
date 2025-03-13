@@ -13,6 +13,13 @@ export default {
         filters: { mime: { $startsWith: "image/png" } }, // Fetch only image files
         fields: ["url", "name"],
       });
+
+      //       const test = await strapi.entityService.findMany("api::auction.auction", {
+      //         populate: ["image"],
+      //       });
+      //
+      //       console.log("test", test);
+
       if (!files.length) {
         return ctx.throw(404, "No images found");
       }
