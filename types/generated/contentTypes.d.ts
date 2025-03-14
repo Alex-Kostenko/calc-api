@@ -480,6 +480,53 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCarsListCarsList extends Struct.CollectionTypeSchema {
+  collectionName: 'cars_lists';
+  info: {
+    description: '';
+    displayName: 'Cars List';
+    pluralName: 'cars-lists';
+    singularName: 'cars-list';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    arrival_date: Schema.Attribute.Date;
+    author: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    car_model: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    end_port: Schema.Attribute.String & Schema.Attribute.Required;
+    end_port_images: Schema.Attribute.Media<'images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cars-list.cars-list'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    purchase_date: Schema.Attribute.Date & Schema.Attribute.Required;
+    start_port: Schema.Attribute.String & Schema.Attribute.Required;
+    start_port_images: Schema.Attribute.Media<'images', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1990;
+        },
+        number
+      >;
+  };
+}
+
 export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
   collectionName: 'coefficients';
   info: {
@@ -1198,6 +1245,10 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    cars_lists: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cars-list.cars-list'
+    >;
     coefficient: Schema.Attribute.Relation<
       'manyToOne',
       'api::coefficient.coefficient'
@@ -1255,6 +1306,7 @@ declare module '@strapi/strapi' {
       'api::auction-tax.auction-tax': ApiAuctionTaxAuctionTax;
       'api::auction.auction': ApiAuctionAuction;
       'api::car-type.car-type': ApiCarTypeCarType;
+      'api::cars-list.cars-list': ApiCarsListCarsList;
       'api::coefficient.coefficient': ApiCoefficientCoefficient;
       'api::const.const': ApiConstConst;
       'api::formula.formula': ApiFormulaFormula;
