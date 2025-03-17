@@ -492,8 +492,7 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    coef: Schema.Attribute.Component<'coef.coef', true> &
-      Schema.Attribute.Required;
+    coef: Schema.Attribute.Component<'coef.coef', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -624,6 +623,7 @@ export interface ApiFuelFuel extends Struct.SingleTypeSchema {
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   collectionName: 'locations';
   info: {
+    description: '';
     displayName: 'Location';
     pluralName: 'locations';
     singularName: 'location';
@@ -644,7 +644,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     port: Schema.Attribute.Relation<'manyToOne', 'api::port.port'>;
-    price: Schema.Attribute.Decimal;
+    price_by_type: Schema.Attribute.Component<'car-type.car-type', true>;
     publishedAt: Schema.Attribute.DateTime;
     state: Schema.Attribute.Relation<'manyToOne', 'api::state.state'>;
     updatedAt: Schema.Attribute.DateTime;
