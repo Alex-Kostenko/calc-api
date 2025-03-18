@@ -381,7 +381,7 @@ export interface ApiAuctionTaxAuctionTax extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    auctions: Schema.Attribute.Relation<'oneToMany', 'api::auction.auction'>;
+    auction: Schema.Attribute.Relation<'oneToOne', 'api::auction.auction'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -416,7 +416,7 @@ export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
   attributes: {
     additionalFee: Schema.Attribute.Decimal & Schema.Attribute.Required;
     auction_tax: Schema.Attribute.Relation<
-      'manyToOne',
+      'oneToOne',
       'api::auction-tax.auction-tax'
     >;
     bids: Schema.Attribute.Component<'bid.bid', true> &
