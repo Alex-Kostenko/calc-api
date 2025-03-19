@@ -36,6 +36,9 @@
     },
     "sublot": {
       "type": "decimal"
+    },
+    "finGuarantee": {
+      "type": "integer"
     }
   }
 }

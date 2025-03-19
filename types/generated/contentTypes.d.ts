@@ -538,6 +538,7 @@ export interface ApiConstConst extends Struct.SingleTypeSchema {
     dangerousGoods: Schema.Attribute.Decimal & Schema.Attribute.Required;
     eur: Schema.Attribute.Decimal & Schema.Attribute.Required;
     expedition: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    finGuarantee: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::const.const'> &
       Schema.Attribute.Private;
