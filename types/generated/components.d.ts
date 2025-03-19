@@ -136,7 +136,7 @@ export interface TaxTax extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
     tax: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    threshold: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    threshold: Schema.Attribute.Integer & Schema.Attribute.Required;
   };
 }
 

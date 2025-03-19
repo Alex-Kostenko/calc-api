@@ -381,7 +381,7 @@ export interface ApiAuctionTaxAuctionTax extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    auctions: Schema.Attribute.Relation<'oneToMany', 'api::auction.auction'>;
+    auction: Schema.Attribute.Relation<'oneToOne', 'api::auction.auction'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -416,7 +416,7 @@ export interface ApiAuctionAuction extends Struct.CollectionTypeSchema {
   attributes: {
     additionalFee: Schema.Attribute.Decimal & Schema.Attribute.Required;
     auction_tax: Schema.Attribute.Relation<
-      'manyToOne',
+      'oneToOne',
       'api::auction-tax.auction-tax'
     >;
     bids: Schema.Attribute.Component<'bid.bid', true> &
@@ -473,6 +473,7 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     packImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    price: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -492,8 +493,7 @@ export interface ApiCoefficientCoefficient extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    coef: Schema.Attribute.Component<'coef.coef', true> &
-      Schema.Attribute.Required;
+    coef: Schema.Attribute.Component<'coef.coef', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -531,7 +531,6 @@ export interface ApiConstConst extends Struct.SingleTypeSchema {
   attributes: {
     broker: Schema.Attribute.Decimal & Schema.Attribute.Required;
     certification: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    cityDelivery: Schema.Attribute.Decimal & Schema.Attribute.Required;
     companyService: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -624,6 +623,7 @@ export interface ApiFuelFuel extends Struct.SingleTypeSchema {
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   collectionName: 'locations';
   info: {
+    description: '';
     displayName: 'Location';
     pluralName: 'locations';
     singularName: 'location';
@@ -644,7 +644,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     port: Schema.Attribute.Relation<'manyToOne', 'api::port.port'>;
-    price: Schema.Attribute.Decimal;
+    price_by_type: Schema.Attribute.Component<'car-type.car-type', true>;
     publishedAt: Schema.Attribute.DateTime;
     state: Schema.Attribute.Relation<'manyToOne', 'api::state.state'>;
     updatedAt: Schema.Attribute.DateTime;

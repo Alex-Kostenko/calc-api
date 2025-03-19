@@ -4,7 +4,8 @@
   "info": {
     "singularName": "location",
     "pluralName": "locations",
-    "displayName": "Location"
+    "displayName": "Location",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,9 +14,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "price": {
-      "type": "decimal"
     },
     "port": {
       "type": "relation",
@@ -34,6 +32,11 @@
       "relation": "manyToMany",
       "target": "api::auction.auction",
       "inversedBy": "locations"
+    },
+    "price_by_type": {
+      "type": "component",
+      "repeatable": true,
+      "component": "car-type.car-type"
     }
   }
 }

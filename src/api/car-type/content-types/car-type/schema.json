@@ -42,6 +42,10 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
     }
   }
 }
