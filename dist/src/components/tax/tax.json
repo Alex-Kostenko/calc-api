@@ -7,7 +7,7 @@
     "options": {},
     "attributes": {
         "threshold": {
-            "type": "biginteger",
+            "type": "integer",
             "required": true
         },
         "tax": {

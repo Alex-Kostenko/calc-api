@@ -23,9 +23,9 @@
         },
         "auction_tax": {
             "type": "relation",
-            "relation": "manyToOne",
+            "relation": "oneToOne",
             "target": "api::auction-tax.auction-tax",
-            "inversedBy": "auctions"
+            "inversedBy": "auction"
         },
         "image": {
             "type": "media",

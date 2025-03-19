@@ -4,4 +4,17 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const strapi_1 = require("@strapi/strapi");
-exports.default = strapi_1.factories.createCoreController('api::location.location');
+exports.default = strapi_1.factories.createCoreController("api::location.location", ({ strapi }) => ({
+    async find(ctx) {
+        const data = await strapi.entityService.findMany("api::location.location", {
+            limit: 1000,
+            populate: [
+                "state",
+                "auctions.auction_tax.tax",
+                "port.car_types",
+                "price_by_type",
+            ],
+        });
+        return { data };
+    },
+}));
