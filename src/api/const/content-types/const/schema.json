@@ -19,10 +19,6 @@
       "type": "decimal",
       "required": true
     },
-    "cityDelivery": {
-      "type": "decimal",
-      "required": true
-    },
     "certification": {
       "type": "decimal",
       "required": true

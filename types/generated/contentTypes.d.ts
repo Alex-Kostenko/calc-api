@@ -473,6 +473,7 @@ export interface ApiCarTypeCarType extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     packImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    price: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -530,7 +531,6 @@ export interface ApiConstConst extends Struct.SingleTypeSchema {
   attributes: {
     broker: Schema.Attribute.Decimal & Schema.Attribute.Required;
     certification: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    cityDelivery: Schema.Attribute.Decimal & Schema.Attribute.Required;
     companyService: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
