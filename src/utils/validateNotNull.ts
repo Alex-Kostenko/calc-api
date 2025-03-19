@@ -9,7 +9,7 @@ export const validateNotNull = (data, fields) => {
     )
     .map((field) => ({
       path: [field],
-      message: `The attribute '${field}' must not be null`,
+      message: `Поле '${field}' обов'язкове для заповнення`,
       name: "ValidationError",
     }));
 
@@ -17,7 +17,7 @@ export const validateNotNull = (data, fields) => {
     const ctx = strapi.requestContext.get();
     ctx.throw(400, {
       details: { errors },
-      message: "Some attributes must not be null",
+      message: "Поле обов'язкове для заповнення",
       name: "ValidationError",
     });
   }
