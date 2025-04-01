@@ -10,7 +10,7 @@
         "value": {
             "type": "decimal",
             "required": true,
-            "min": 1,
+            "min": -1000000,
             "default": 1
         },
         "isPercent": {
